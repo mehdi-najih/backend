@@ -14,6 +14,12 @@ public class PredicateBuilder {
         if (filters.get("firstName") != null && !filters.get("firstName").equals("")) {
             where.and(employee.firstName.eq(filters.get("firstName")));
         }
+        if (filters.get("lastName") != null && !filters.get("lastName").equals("")) {
+            where.and(employee.lastName.eq(filters.get("lastName")));
+        }
+        if (filters.get("emailId") != null && !filters.get("emailId").equals("")) {
+            where.and(employee.emailId.eq(filters.get("emailId")));
+        }
         return where;
     }
 }
