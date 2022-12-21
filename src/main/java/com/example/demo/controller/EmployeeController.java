@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -25,6 +26,7 @@ public class EmployeeController  {
 private EmployeeRepository employeeRepository ;
 
    //Filtring
+    /*
     @GetMapping("/employees")
     public Page<Employee> getAllEmployeeFiltring(@RequestParam (required = false) String firstName ,
                                                  @RequestParam (required = false) String lastName,
@@ -33,7 +35,12 @@ private EmployeeRepository employeeRepository ;
                                                  @RequestParam (required = false) Integer recordCount){
         return  employeeService.getAllEmployeeFiltring(firstName , lastName , emailId , pageNo ,recordCount);
     }
+*/
 
+    @GetMapping("/employees")
+    public Page<Employee> getAllEmployeeFiltring(@RequestParam Map<String, String> filters){
+        return  employeeService.getAllEmployeeFiltring(filters);
+    };
 // insert
     @PostMapping("/employee")
     public Employee saveEmployeeDetails(@RequestBody Employee employee){
